@@ -19,7 +19,14 @@ namespace LoiNormaleStatsTp4
 
       private void Menu_Load(object sender, EventArgs e)
       {
-
+          Cb_Cas.SelectedIndex = 0;
       }
+
+      private void Btn_Quitter_Click(object sender, EventArgs e)
+      {
+          this.Close();
+      }
+
+     
    }
 }
