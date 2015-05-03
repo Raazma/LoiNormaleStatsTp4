@@ -13,7 +13,7 @@ namespace LoiNormaleStatsTp4
 {
    public partial class Menu : Form
    {
-       private object[,] Table = new object[42,11] ;
+       private object[,] Table;
       
       public Menu()
       {
@@ -24,7 +24,7 @@ namespace LoiNormaleStatsTp4
 
       private void Menu_Load(object sender, EventArgs e)
       {
-          
+          Cb_Cas.SelectedIndex = 0;
       }
 
       private void Btn_Quitter_Click(object sender, EventArgs e)
@@ -36,29 +36,45 @@ namespace LoiNormaleStatsTp4
           OpenFileDialog file = new OpenFileDialog();
 
           if(file.ShowDialog() == DialogResult.OK)
-          {
-          Microsoft.Office.Interop.Excel.Application App = new Microsoft.Office.Interop.Excel.Application();
-          Workbook wb = App.Workbooks.Open(file.FileName);
-          Worksheet ws = wb.ActiveSheet;
-          Range range = ws.UsedRange;
-          Range value;
-          int I = 0;
-           int J = 0;
+          { 
+              try
+              {
+                  //declaration des objet pour la lecture d'un fichier excel
+                  Microsoft.Office.Interop.Excel.Application App = new Microsoft.Office.Interop.Excel.Application();
+                  Workbook wb = App.Workbooks.Open(file.FileName);
+                  Worksheet ws = wb.ActiveSheet;
+                  Range range = ws.UsedRange;//le nombre de ligne et de colonne dans le fichier excel
+                  Table = new object[range.Rows.Count, range.Columns.Count]; //instancie le tableau avec les bonne grosseur
 
-          for (int i = 1; i <= range.Rows.Count; i++)
-          {
-              for (int j = 1; j <= range.Columns.Count; j++)
-              {                
-                 Table[i-1, j-1] = ((Range)ws.Cells[i, j]).Value2;
-                                
+                  //Lecture  des donnees
+                  for (int i = 1; i <= range.Rows.Count; i++)
+                  {
+                      for (int j = 1; j <= range.Columns.Count; j++)
+                      {
+                          //pas le choix de mettre -1 vue quon commence a 1 la boucle
+                          Table[i - 1, j - 1] = ((Range)ws.Cells[i, j]).Value2;
+
+                      }
+
+                  }
+                  wb.Close(false);
+                  App.Quit();
               }
-            
-          }
+              catch(Exception e)
+              {
+                  MessageBox.Show("Erreur lors de la lecture");
+              }
+              
 
-          wb.Close(false);
-         App.Quit();
+            //fermeture sans enregistrement du fichier excel
+          
 
        }
+      }
+
+      private void Cb_Cas_SelectedIndexChanged(object sender, EventArgs e)
+      {
+
       }
 
      
