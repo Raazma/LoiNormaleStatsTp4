@@ -93,7 +93,7 @@ namespace LoiNormaleStatsTp4
           int firstpart = (int)value; // converti en int pour perdre la decimal avoir juste l'entier
           int secondpart = (int)((value - firstpart) * 1000); //retourne chercher la partie decimal du nombre l
 
-          String coteZ = firstpart + "," + ((int)(secondpart / 100f)).ToString(); //construction de mes chaines pour la recherche dans la table
+          String coteZ = Math.Abs(firstpart) + "," + ((int)(Math.Abs(secondpart / 100f))).ToString(); //construction de mes chaines pour la recherche dans la table
           String decpart = (((int)Math.Round(secondpart / 10f))).ToString(); //construction de la partie decimal pour la recherche dans la table
           decpart = "0,0" + decpart[1];
           MessageBox.Show(coteZ + "             " + decpart);
