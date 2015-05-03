@@ -95,12 +95,13 @@ namespace LoiNormaleStatsTp4
 
           String coteZ = Math.Abs(firstpart) + "," + ((int)(Math.Abs(secondpart / 100f))).ToString(); //construction de mes chaines pour la recherche dans la table
           String decpart = (((int)Math.Round(secondpart / 10f))).ToString(); //construction de la partie decimal pour la recherche dans la table
-          decpart = "0,0" + decpart[1];
-          MessageBox.Show(coteZ + "             " + decpart);
+          decpart = "0,0" + (decpart.Length > 1 ? decpart[1] : '0'); //suite de la construction de la partie decimal
+          MessageBox.Show(Table[3,3].GetType().ToString());
 
-          return new String[] { coteZ, decpart };
+          return new String[] { coteZ, decpart};
       
-      
+          
+
       }
      
    }
