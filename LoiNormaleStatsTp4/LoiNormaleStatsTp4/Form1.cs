@@ -53,10 +53,10 @@ namespace LoiNormaleStatsTp4
                       {
                           //pas le choix de mettre -1 vue quon commence a 1 la boucle
                           Table[i - 1, j - 1] = ((Range)ws.Cells[i, j]).Value2;
-
                       }
 
                   }
+                  //fermeture sans enregistrement du fichier excel
                   wb.Close(false);
                   App.Quit();
               }
@@ -64,19 +64,44 @@ namespace LoiNormaleStatsTp4
               {
                   MessageBox.Show("Erreur lors de la lecture");
               }
-              
-
-            //fermeture sans enregistrement du fichier excel
-          
+                                
 
        }
       }
 
+      private void CalculInferieur()
+      {
+
+          double value = (double.Parse(Tb_Value_A.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text);
+          SetCotePourRecherche(value);
+      
+      
+      }
       private void Cb_Cas_SelectedIndexChanged(object sender, EventArgs e)
       {
 
       }
 
+      private void Btn_Calcul_Click(object sender, EventArgs e)
+      {
+          CalculInferieur();
+      }
+
+      private String[] SetCotePourRecherche(double value)
+      {
+
+          int firstpart = (int)value; // converti en int pour perdre la decimal avoir juste l'entier
+          int secondpart = (int)((value - firstpart) * 1000); //retourne chercher la partie decimal du nombre l
+
+          String coteZ = firstpart + "," + ((int)(secondpart / 100f)).ToString(); //construction de mes chaines pour la recherche dans la table
+          String decpart = (((int)Math.Round(secondpart / 10f))).ToString(); //construction de la partie decimal pour la recherche dans la table
+          decpart = "0,0" + decpart[1];
+          MessageBox.Show(coteZ + "             " + decpart);
+
+          return new String[] { coteZ, decpart };
+      
+      
+      }
      
    }
 }

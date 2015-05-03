@@ -33,10 +33,14 @@
             this.Btn_Quitter = new System.Windows.Forms.Button();
             this.Cb_Cas = new System.Windows.Forms.ComboBox();
             this.Btn_Calcul = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.Tb_Moyenne = new System.Windows.Forms.TextBox();
+            this.Tb_Ecart = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.Tb_Value_A = new System.Windows.Forms.TextBox();
+            this.Tb_Value_B = new System.Windows.Forms.TextBox();
+            this.Lb_Choice = new System.Windows.Forms.Label();
+            this.Lb_Et = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -52,7 +56,7 @@
             // Btn_Quitter
             // 
             this.Btn_Quitter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Quitter.Location = new System.Drawing.Point(62, 369);
+            this.Btn_Quitter.Location = new System.Drawing.Point(40, 268);
             this.Btn_Quitter.Name = "Btn_Quitter";
             this.Btn_Quitter.Size = new System.Drawing.Size(150, 34);
             this.Btn_Quitter.TabIndex = 3;
@@ -77,27 +81,28 @@
             // Btn_Calcul
             // 
             this.Btn_Calcul.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Calcul.Location = new System.Drawing.Point(269, 369);
+            this.Btn_Calcul.Location = new System.Drawing.Point(259, 268);
             this.Btn_Calcul.Name = "Btn_Calcul";
             this.Btn_Calcul.Size = new System.Drawing.Size(150, 34);
             this.Btn_Calcul.TabIndex = 6;
             this.Btn_Calcul.Text = "Calculer";
             this.Btn_Calcul.UseVisualStyleBackColor = true;
+            this.Btn_Calcul.Click += new System.EventHandler(this.Btn_Calcul_Click);
             // 
-            // textBox1
+            // Tb_Moyenne
             // 
-            this.textBox1.Location = new System.Drawing.Point(211, 54);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ShortcutsEnabled = false;
-            this.textBox1.Size = new System.Drawing.Size(81, 20);
-            this.textBox1.TabIndex = 7;
+            this.Tb_Moyenne.Location = new System.Drawing.Point(211, 54);
+            this.Tb_Moyenne.Name = "Tb_Moyenne";
+            this.Tb_Moyenne.ShortcutsEnabled = false;
+            this.Tb_Moyenne.Size = new System.Drawing.Size(81, 20);
+            this.Tb_Moyenne.TabIndex = 7;
             // 
-            // textBox2
+            // Tb_Ecart
             // 
-            this.textBox2.Location = new System.Drawing.Point(328, 53);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(81, 20);
-            this.textBox2.TabIndex = 8;
+            this.Tb_Ecart.Location = new System.Drawing.Point(328, 53);
+            this.Tb_Ecart.Name = "Tb_Ecart";
+            this.Tb_Ecart.Size = new System.Drawing.Size(81, 20);
+            this.Tb_Ecart.TabIndex = 8;
             // 
             // label2
             // 
@@ -119,22 +124,58 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "Ecart Type";
             // 
+            // Tb_Value_A
+            // 
+            this.Tb_Value_A.Location = new System.Drawing.Point(62, 140);
+            this.Tb_Value_A.Name = "Tb_Value_A";
+            this.Tb_Value_A.Size = new System.Drawing.Size(71, 20);
+            this.Tb_Value_A.TabIndex = 11;
+            // 
+            // Tb_Value_B
+            // 
+            this.Tb_Value_B.Location = new System.Drawing.Point(188, 141);
+            this.Tb_Value_B.Name = "Tb_Value_B";
+            this.Tb_Value_B.Size = new System.Drawing.Size(74, 20);
+            this.Tb_Value_B.TabIndex = 12;
+            // 
+            // Lb_Choice
+            // 
+            this.Lb_Choice.AutoSize = true;
+            this.Lb_Choice.Location = new System.Drawing.Point(13, 144);
+            this.Lb_Choice.Name = "Lb_Choice";
+            this.Lb_Choice.Size = new System.Drawing.Size(35, 13);
+            this.Lb_Choice.TabIndex = 13;
+            this.Lb_Choice.Text = "Entre:";
+            // 
+            // Lb_Et
+            // 
+            this.Lb_Et.AutoSize = true;
+            this.Lb_Et.Location = new System.Drawing.Point(154, 143);
+            this.Lb_Et.Name = "Lb_Et";
+            this.Lb_Et.Size = new System.Drawing.Size(17, 13);
+            this.Lb_Et.TabIndex = 14;
+            this.Lb_Et.Text = "Et";
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(469, 418);
+            this.ClientSize = new System.Drawing.Size(469, 340);
+            this.Controls.Add(this.Lb_Et);
+            this.Controls.Add(this.Lb_Choice);
+            this.Controls.Add(this.Tb_Value_B);
+            this.Controls.Add(this.Tb_Value_A);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Tb_Ecart);
+            this.Controls.Add(this.Tb_Moyenne);
             this.Controls.Add(this.Btn_Calcul);
             this.Controls.Add(this.Cb_Cas);
             this.Controls.Add(this.Btn_Quitter);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "Menu";
-            this.Text = "That Menu";
+            this.Text = "That Normal Calculator";
             this.Load += new System.EventHandler(this.Menu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -148,10 +189,14 @@
       private System.Windows.Forms.Button Btn_Quitter;
       private System.Windows.Forms.ComboBox Cb_Cas;
       private System.Windows.Forms.Button Btn_Calcul;
-      private System.Windows.Forms.TextBox textBox1;
-      private System.Windows.Forms.TextBox textBox2;
+      private System.Windows.Forms.TextBox Tb_Moyenne;
+      private System.Windows.Forms.TextBox Tb_Ecart;
       private System.Windows.Forms.Label label2;
       private System.Windows.Forms.Label label3;
+      private System.Windows.Forms.TextBox Tb_Value_A;
+      private System.Windows.Forms.TextBox Tb_Value_B;
+      private System.Windows.Forms.Label Lb_Choice;
+      private System.Windows.Forms.Label Lb_Et;
    }
 }
 
