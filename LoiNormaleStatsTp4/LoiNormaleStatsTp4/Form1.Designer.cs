@@ -72,6 +72,7 @@
             this.Cb_Cas.Name = "Cb_Cas";
             this.Cb_Cas.Size = new System.Drawing.Size(159, 21);
             this.Cb_Cas.TabIndex = 5;
+            this.Cb_Cas.SelectedIndexChanged += new System.EventHandler(this.Cb_Cas_SelectedIndexChanged);
             // 
             // Btn_Calcul
             // 
