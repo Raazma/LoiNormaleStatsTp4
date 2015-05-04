@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
+using System.Reflection;
 
 namespace LoiNormaleStatsTp4
 {
@@ -40,11 +41,12 @@ namespace LoiNormaleStatsTp4
               try
 
               {
-                 string exeDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                
+                // string exeDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
                 // Excel.Workbook wkbook = exapp.Workbooks.Open(System.IO.Path.Combine(exeDir, "test.xlsx"));
                   //declaration des objet pour la lecture d'un fichier excel
                   Microsoft.Office.Interop.Excel.Application App = new Microsoft.Office.Interop.Excel.Application();
-                  Workbook wb = App.Workbooks.Open(System.IO.Path.Combine(exeDir, "tablenormale.xlsx"));
+                  Workbook wb = App.Workbooks.Open(System.IO.Directory.GetCurrentDirectory() + "\\tablenormale.xlsx", Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value);
                   Worksheet ws = wb.ActiveSheet;
                   Range range = ws.UsedRange;//le nombre de ligne et de colonne dans le fichier excel
                   Table = new object[range.Rows.Count, range.Columns.Count]; //instancie le tableau avec les bonne grosseur
