@@ -42,7 +42,7 @@
          this.Lb_Choice = new System.Windows.Forms.Label();
          this.Lb_Et = new System.Windows.Forms.Label();
          this.Lb_Inf = new System.Windows.Forms.Label();
-         this.textBox1 = new System.Windows.Forms.TextBox();
+         this.TB_Inferieur = new System.Windows.Forms.TextBox();
          this.SuspendLayout();
          // 
          // label1
@@ -98,6 +98,7 @@
          this.Tb_Moyenne.ShortcutsEnabled = false;
          this.Tb_Moyenne.Size = new System.Drawing.Size(81, 20);
          this.Tb_Moyenne.TabIndex = 7;
+         this.Tb_Moyenne.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Tb_Moyenne_KeyPress);
          // 
          // Tb_Ecart
          // 
@@ -105,6 +106,7 @@
          this.Tb_Ecart.Name = "Tb_Ecart";
          this.Tb_Ecart.Size = new System.Drawing.Size(81, 20);
          this.Tb_Ecart.TabIndex = 8;
+         this.Tb_Ecart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Tb_Ecart_KeyPress);
          // 
          // label2
          // 
@@ -132,6 +134,7 @@
          this.Tb_Value_A.Name = "Tb_Value_A";
          this.Tb_Value_A.Size = new System.Drawing.Size(71, 20);
          this.Tb_Value_A.TabIndex = 11;
+         this.Tb_Value_A.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Tb_Value_A_KeyPress);
          // 
          // Tb_Value_B
          // 
@@ -139,6 +142,7 @@
          this.Tb_Value_B.Name = "Tb_Value_B";
          this.Tb_Value_B.Size = new System.Drawing.Size(74, 20);
          this.Tb_Value_B.TabIndex = 12;
+         this.Tb_Value_B.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Tb_Value_B_KeyPress);
          // 
          // Lb_Choice
          // 
@@ -167,19 +171,20 @@
          this.Lb_Inf.TabIndex = 15;
          this.Lb_Inf.Text = "Inferieur a:";
          // 
-         // textBox1
+         // TB_Inferieur
          // 
-         this.textBox1.Location = new System.Drawing.Point(76, 164);
-         this.textBox1.Name = "textBox1";
-         this.textBox1.Size = new System.Drawing.Size(71, 20);
-         this.textBox1.TabIndex = 16;
+         this.TB_Inferieur.Location = new System.Drawing.Point(76, 164);
+         this.TB_Inferieur.Name = "TB_Inferieur";
+         this.TB_Inferieur.Size = new System.Drawing.Size(71, 20);
+         this.TB_Inferieur.TabIndex = 16;
+         this.TB_Inferieur.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
          // 
          // Menu
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(469, 340);
-         this.Controls.Add(this.textBox1);
+         this.Controls.Add(this.TB_Inferieur);
          this.Controls.Add(this.Lb_Inf);
          this.Controls.Add(this.Lb_Et);
          this.Controls.Add(this.Lb_Choice);
@@ -218,7 +223,7 @@
       private System.Windows.Forms.Label Lb_Choice;
       private System.Windows.Forms.Label Lb_Et;
       private System.Windows.Forms.Label Lb_Inf;
-      private System.Windows.Forms.TextBox textBox1;
+      private System.Windows.Forms.TextBox TB_Inferieur;
    }
 }
 
