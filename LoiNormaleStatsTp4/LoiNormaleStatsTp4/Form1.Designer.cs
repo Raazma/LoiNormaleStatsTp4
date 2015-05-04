@@ -39,10 +39,16 @@
          this.label3 = new System.Windows.Forms.Label();
          this.Tb_Value_A = new System.Windows.Forms.TextBox();
          this.Tb_Value_B = new System.Windows.Forms.TextBox();
-         this.Lb_Choice = new System.Windows.Forms.Label();
+         this.Lb_Entre = new System.Windows.Forms.Label();
          this.Lb_Et = new System.Windows.Forms.Label();
          this.Lb_Inf = new System.Windows.Forms.Label();
+<<<<<<< HEAD
          this.TB_Inferieur = new System.Windows.Forms.TextBox();
+=======
+         this.Tb_Inf = new System.Windows.Forms.TextBox();
+         this.Lb_Sup = new System.Windows.Forms.Label();
+         this.Tb_Sup = new System.Windows.Forms.TextBox();
+>>>>>>> origin/master
          this.SuspendLayout();
          // 
          // label1
@@ -144,14 +150,14 @@
          this.Tb_Value_B.TabIndex = 12;
          this.Tb_Value_B.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Tb_Value_B_KeyPress);
          // 
-         // Lb_Choice
+         // Lb_Entre
          // 
-         this.Lb_Choice.AutoSize = true;
-         this.Lb_Choice.Location = new System.Drawing.Point(10, 123);
-         this.Lb_Choice.Name = "Lb_Choice";
-         this.Lb_Choice.Size = new System.Drawing.Size(35, 13);
-         this.Lb_Choice.TabIndex = 13;
-         this.Lb_Choice.Text = "Entre:";
+         this.Lb_Entre.AutoSize = true;
+         this.Lb_Entre.Location = new System.Drawing.Point(10, 123);
+         this.Lb_Entre.Name = "Lb_Entre";
+         this.Lb_Entre.Size = new System.Drawing.Size(35, 13);
+         this.Lb_Entre.TabIndex = 13;
+         this.Lb_Entre.Text = "Entre:";
          // 
          // Lb_Et
          // 
@@ -171,6 +177,7 @@
          this.Lb_Inf.TabIndex = 15;
          this.Lb_Inf.Text = "Inferieur a:";
          // 
+<<<<<<< HEAD
          // TB_Inferieur
          // 
          this.TB_Inferieur.Location = new System.Drawing.Point(76, 164);
@@ -178,16 +185,46 @@
          this.TB_Inferieur.Size = new System.Drawing.Size(71, 20);
          this.TB_Inferieur.TabIndex = 16;
          this.TB_Inferieur.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+=======
+         // Tb_Inf
+         // 
+         this.Tb_Inf.Location = new System.Drawing.Point(76, 164);
+         this.Tb_Inf.Name = "Tb_Inf";
+         this.Tb_Inf.Size = new System.Drawing.Size(71, 20);
+         this.Tb_Inf.TabIndex = 16;
+         // 
+         // Lb_Sup
+         // 
+         this.Lb_Sup.AutoSize = true;
+         this.Lb_Sup.Location = new System.Drawing.Point(12, 204);
+         this.Lb_Sup.Name = "Lb_Sup";
+         this.Lb_Sup.Size = new System.Drawing.Size(64, 13);
+         this.Lb_Sup.TabIndex = 17;
+         this.Lb_Sup.Text = "Superieur a:";
+         // 
+         // Tb_Sup
+         // 
+         this.Tb_Sup.Location = new System.Drawing.Point(82, 201);
+         this.Tb_Sup.Name = "Tb_Sup";
+         this.Tb_Sup.Size = new System.Drawing.Size(65, 20);
+         this.Tb_Sup.TabIndex = 18;
+>>>>>>> origin/master
          // 
          // Menu
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(469, 340);
+<<<<<<< HEAD
          this.Controls.Add(this.TB_Inferieur);
+=======
+         this.Controls.Add(this.Tb_Sup);
+         this.Controls.Add(this.Lb_Sup);
+         this.Controls.Add(this.Tb_Inf);
+>>>>>>> origin/master
          this.Controls.Add(this.Lb_Inf);
          this.Controls.Add(this.Lb_Et);
-         this.Controls.Add(this.Lb_Choice);
+         this.Controls.Add(this.Lb_Entre);
          this.Controls.Add(this.Tb_Value_B);
          this.Controls.Add(this.Tb_Value_A);
          this.Controls.Add(this.label3);
@@ -220,10 +257,16 @@
       private System.Windows.Forms.Label label3;
       private System.Windows.Forms.TextBox Tb_Value_A;
       private System.Windows.Forms.TextBox Tb_Value_B;
-      private System.Windows.Forms.Label Lb_Choice;
+      private System.Windows.Forms.Label Lb_Entre;
       private System.Windows.Forms.Label Lb_Et;
       private System.Windows.Forms.Label Lb_Inf;
+<<<<<<< HEAD
       private System.Windows.Forms.TextBox TB_Inferieur;
+=======
+      private System.Windows.Forms.TextBox Tb_Inf;
+      private System.Windows.Forms.Label Lb_Sup;
+      private System.Windows.Forms.TextBox Tb_Sup;
+>>>>>>> origin/master
    }
 }
 
