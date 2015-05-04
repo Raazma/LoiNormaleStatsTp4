@@ -75,12 +75,12 @@ namespace LoiNormaleStatsTp4
 
       private void CalculInferieur()
       {
-         String Resultat = "Le pourcentage de valeurs qui peuvent être inférieur à " + TB_Inferieur.Text + " est selon \n"
+         String Resultat = "Le pourcentage de valeurs qui peuvent être inférieur à " + Tb_Inf.Text + " est selon \n"
                           + "la moyenne : " + Tb_Moyenne.Text + "\net \n"
                            + "l'écart type : " + Tb_Ecart.Text + "\n"
                            +"égal à ";
 
-         double value = (double.Parse(TB_Inferieur.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text);
+         double value = (double.Parse(Tb_Inf.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text);
          String[] Recherche =  SetCotePourRecherche(value);         
          Resultat += (float.Parse(RechercheDansLaTable(Recherche[0], Recherche[1]).ToString()) * 100).ToString();
          
@@ -88,8 +88,17 @@ namespace LoiNormaleStatsTp4
       
       }
       private void CalculSuperieur()
-      { 
+      {
+         String Resultat = "Le pourcentage de valeurs qui peuvent être supérieur à " + Tb_Sup.Text + " est selon \n"
+                         + "la moyenne : " + Tb_Moyenne.Text + "\net \n"
+                          + "l'écart type : " + Tb_Ecart.Text + "\n"
+                          + "égal à ";
 
+         double value = (double.Parse(Tb_Sup.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text);
+         String[] Recherche = SetCotePourRecherche(value);
+         Resultat += (0.5 - (float.Parse(RechercheDansLaTable(Recherche[0], Recherche[1]).ToString())) * 100).ToString();         
+
+         MessageBox.Show(Resultat);
       }
 
       private void CalculInterval()
@@ -99,17 +108,40 @@ namespace LoiNormaleStatsTp4
 
       private void Cb_Cas_SelectedIndexChanged(object sender, EventArgs e)
       {
+         Lb_Tb_Visibility();
+      }
+
+      private void Lb_Tb_Visibility()
+      {
+         Tb_Value_A.Visible = false;
+         Tb_Value_B.Visible = false;
+         Lb_Entre.Visible = false;
+         Lb_Et.Visible = false;
+         
+         Tb_Inf.Visible = false;
+         Lb_Inf.Visible = false;  
+
+
+         Tb_Sup.Visible = false;
+         Lb_Sup.Visible = false;
+
          if (Cb_Cas.SelectedIndex == 0)
-         {            
+         {
+            Tb_Value_A.Visible = true;
+            Tb_Value_B.Visible = true;
+            Lb_Entre.Visible = true;
+            Lb_Et.Visible = true;                   
 
          }
          else if (Cb_Cas.SelectedIndex == 1)
          {
-           
+            Tb_Inf.Visible = true;
+            Lb_Inf.Visible = true;  
          }
          else
          {
-            
+            Tb_Sup.Visible = true;
+            Lb_Sup.Visible = true;
          }
       }
 
@@ -125,15 +157,19 @@ namespace LoiNormaleStatsTp4
             }
             else if(Cb_Cas.SelectedIndex==1)
             {
-               if(TB_Inferieur.Text!= String.Empty)
+               if (Tb_Inf.Text != String.Empty)
                CalculInferieur();
             }
             else
             {
-                
+               if (Tb_Sup.Text != String.Empty)
                CalculSuperieur();
             }
-         }    
+         }
+         else
+         {
+            MessageBox.Show("Veuillez Entrez une Moyenne ainsi qu'une Écart type");
+         }
           
       }
 
