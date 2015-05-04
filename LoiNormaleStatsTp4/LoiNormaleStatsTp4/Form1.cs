@@ -72,7 +72,8 @@ namespace LoiNormaleStatsTp4
       {
 
           double value = (double.Parse(Tb_Value_A.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text);
-          SetCotePourRecherche(value);
+         String[] Recherche =  SetCotePourRecherche(value);
+         RechercheDansLaTable(Recherche[0], Recherche[1]);
       
       
       }
@@ -94,19 +95,31 @@ namespace LoiNormaleStatsTp4
 
           String coteZ = Math.Abs(firstpart) + "," + ((int)(Math.Abs(secondpart / 100f))).ToString(); //construction de mes chaines pour la recherche dans la table
           String decpart = (((int)Math.Round(secondpart / 10f))).ToString(); //construction de la partie decimal pour la recherche dans la table
-          decpart = "0,0" + (decpart.Length > 1 ? decpart[1] : '0'); //suite de la construction de la partie decimal
-          MessageBox.Show(Table[3,3].GetType().ToString());
+          decpart = "0,0" + (decpart.Length > 1 ? decpart[1] : decpart[0]); //suite de la construction de la partie decimal
+          MessageBox.Show(coteZ + "     " + decpart);
 
           return new String[] { coteZ, decpart};            
 
       }
 
-      private double RechercheDansLaTable(String coteZ, String decPart)
-      { 
-      
-      
-      
-      
+      private object RechercheDansLaTable(String coteZ, String decPart)
+      {
+         int x = 0,y = 0;
+         bool trouver = false;
+
+         for (int i = 1; i < 42 && !trouver; i++)         
+            if (trouver = (coteZ == Table[x =  i, 0].ToString())){} //Recherche de la ligne de la code z
+                       
+         trouver = false;
+         
+         for (int i = 0; i < 11 && !trouver; i++)
+            if (trouver = (decPart == Table[0, y = i].ToString())) { } //Recherche de la colonne de la partie decimale
+              
+            
+         
+        // MessageBox.Show(Table[x, y].ToString());
+
+         return Table[x, y];
       
       }
    }
