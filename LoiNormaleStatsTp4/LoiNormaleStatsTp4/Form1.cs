@@ -96,13 +96,30 @@ namespace LoiNormaleStatsTp4
 
          double value = (double.Parse(Tb_Sup.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text);
          String[] Recherche = SetCotePourRecherche(value);
-         Resultat += (0.5 - (float.Parse(RechercheDansLaTable(Recherche[0], Recherche[1]).ToString())) * 100).ToString();         
+         Resultat += ((0.5 - float.Parse(RechercheDansLaTable(Recherche[0], Recherche[1]) .ToString())) * 100).ToString();         
 
          MessageBox.Show(Resultat);
       }
 
       private void CalculInterval()
       { 
+         String Resultat = "Le pourcentage de valeurs qui peuvent être entre " + Tb_Value_A.Text +  " et " + Tb_Value_B.Text + " est selon \n"
+                          + "la moyenne : " + Tb_Moyenne.Text + "\net \n"
+                          + "l'écart type : " + Tb_Ecart.Text + "\n"
+                          + "égal à ";
+
+         double valueA = (double.Parse(Tb_Value_A.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text);
+         String[] RechercheA = SetCotePourRecherche(valueA);
+         double ValueA =  (float.Parse(RechercheDansLaTable(RechercheA[0], RechercheA[1]).ToString()) * 100);
+
+         double valueB = (double.Parse(Tb_Value_B.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text);
+         String[] RechercheB = SetCotePourRecherche(valueB);
+         double ValueB = (float.Parse(RechercheDansLaTable(RechercheB[0], RechercheB[1]).ToString())) * 100;
+
+         Resultat += (ValueA - ValueB).ToString();
+
+         MessageBox.Show(Resultat);
+         
          
       }
 
@@ -183,6 +200,8 @@ namespace LoiNormaleStatsTp4
           String decpart = (((int)Math.Round(secondpart / 10f))).ToString(); //construction de la partie decimal pour la recherche dans la table
           decpart = "0,0" + (decpart.Length > 1 ? decpart[1] : decpart[0]); //suite de la construction de la partie decimal
 
+         // MessageBox.Show(coteZ + "    " + decpart);
+
           return new String[] { coteZ, decpart};            
 
       }
@@ -202,7 +221,7 @@ namespace LoiNormaleStatsTp4
               
             
          
-        // MessageBox.Show(Table[x, y].ToString());
+         //MessageBox.Show(Table[x, y].ToString());
 
          return Table[x, y];
       
@@ -240,9 +259,7 @@ namespace LoiNormaleStatsTp4
       private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
       {
          BlockLetter(e);
-      }
-
-      
+      }     
   
    }
 }
