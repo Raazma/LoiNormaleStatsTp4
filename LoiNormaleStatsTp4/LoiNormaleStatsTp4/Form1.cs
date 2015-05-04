@@ -107,16 +107,37 @@ namespace LoiNormaleStatsTp4
                           + "la moyenne : " + Tb_Moyenne.Text + "\net \n"
                           + "l'écart type : " + Tb_Ecart.Text + "\n"
                           + "égal à ";
+         bool FlagValueA = false;
+         bool FlagValueB = false;
+         
 
          double valueA = (double.Parse(Tb_Value_A.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text);
-         String[] RechercheA = SetCotePourRecherche(valueA);
+         if (valueA < 0)
+            FlagValueA = true;         
+         String[] RechercheA = SetCotePourRecherche(valueA);        
          double ValueA =  (float.Parse(RechercheDansLaTable(RechercheA[0], RechercheA[1]).ToString()) * 100);
 
+       
          double valueB = (double.Parse(Tb_Value_B.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text);
+         if (valueB < 0)
+            FlagValueB = true; 
          String[] RechercheB = SetCotePourRecherche(valueB);
          double ValueB = (float.Parse(RechercheDansLaTable(RechercheB[0], RechercheB[1]).ToString())) * 100;
 
-         Resultat += (ValueA - ValueB).ToString();
+
+         if ((FlagValueA && !FlagValueB)
+          || (!FlagValueA && FlagValueB))
+         {
+            Resultat += (ValueA + ValueB).ToString();
+         }        
+         else
+         {
+            if(valueA>valueB)
+            Resultat += (ValueA - ValueB).ToString();
+            else
+            Resultat += (ValueB - ValueA).ToString();
+         }
+         
 
          MessageBox.Show(Resultat);
          

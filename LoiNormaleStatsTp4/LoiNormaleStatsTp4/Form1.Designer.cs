@@ -51,7 +51,7 @@
          // 
          this.label1.AutoSize = true;
          this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.label1.Location = new System.Drawing.Point(9, 18);
+         this.label1.Location = new System.Drawing.Point(10, 21);
          this.label1.Name = "label1";
          this.label1.Size = new System.Drawing.Size(181, 16);
          this.label1.TabIndex = 2;
@@ -60,7 +60,7 @@
          // Btn_Quitter
          // 
          this.Btn_Quitter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-         this.Btn_Quitter.Location = new System.Drawing.Point(40, 268);
+         this.Btn_Quitter.Location = new System.Drawing.Point(41, 138);
          this.Btn_Quitter.Name = "Btn_Quitter";
          this.Btn_Quitter.Size = new System.Drawing.Size(150, 34);
          this.Btn_Quitter.TabIndex = 3;
@@ -76,7 +76,7 @@
             "Interieur d\'une intervale",
             "Inferieur a une valeur",
             "Superieur a une valeur"});
-         this.Cb_Cas.Location = new System.Drawing.Point(12, 53);
+         this.Cb_Cas.Location = new System.Drawing.Point(15, 54);
          this.Cb_Cas.Name = "Cb_Cas";
          this.Cb_Cas.Size = new System.Drawing.Size(159, 21);
          this.Cb_Cas.TabIndex = 5;
@@ -85,7 +85,7 @@
          // Btn_Calcul
          // 
          this.Btn_Calcul.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-         this.Btn_Calcul.Location = new System.Drawing.Point(259, 268);
+         this.Btn_Calcul.Location = new System.Drawing.Point(260, 138);
          this.Btn_Calcul.Name = "Btn_Calcul";
          this.Btn_Calcul.Size = new System.Drawing.Size(150, 34);
          this.Btn_Calcul.TabIndex = 6;
@@ -104,7 +104,7 @@
          // 
          // Tb_Ecart
          // 
-         this.Tb_Ecart.Location = new System.Drawing.Point(328, 53);
+         this.Tb_Ecart.Location = new System.Drawing.Point(328, 54);
          this.Tb_Ecart.Name = "Tb_Ecart";
          this.Tb_Ecart.Size = new System.Drawing.Size(81, 20);
          this.Tb_Ecart.TabIndex = 8;
@@ -132,7 +132,7 @@
          // 
          // Tb_Value_A
          // 
-         this.Tb_Value_A.Location = new System.Drawing.Point(59, 119);
+         this.Tb_Value_A.Location = new System.Drawing.Point(75, 96);
          this.Tb_Value_A.Name = "Tb_Value_A";
          this.Tb_Value_A.Size = new System.Drawing.Size(71, 20);
          this.Tb_Value_A.TabIndex = 11;
@@ -140,7 +140,7 @@
          // 
          // Tb_Value_B
          // 
-         this.Tb_Value_B.Location = new System.Drawing.Point(185, 120);
+         this.Tb_Value_B.Location = new System.Drawing.Point(185, 96);
          this.Tb_Value_B.Name = "Tb_Value_B";
          this.Tb_Value_B.Size = new System.Drawing.Size(74, 20);
          this.Tb_Value_B.TabIndex = 12;
@@ -149,7 +149,7 @@
          // Lb_Entre
          // 
          this.Lb_Entre.AutoSize = true;
-         this.Lb_Entre.Location = new System.Drawing.Point(10, 123);
+         this.Lb_Entre.Location = new System.Drawing.Point(12, 100);
          this.Lb_Entre.Name = "Lb_Entre";
          this.Lb_Entre.Size = new System.Drawing.Size(35, 13);
          this.Lb_Entre.TabIndex = 13;
@@ -158,7 +158,7 @@
          // Lb_Et
          // 
          this.Lb_Et.AutoSize = true;
-         this.Lb_Et.Location = new System.Drawing.Point(151, 122);
+         this.Lb_Et.Location = new System.Drawing.Point(153, 99);
          this.Lb_Et.Name = "Lb_Et";
          this.Lb_Et.Size = new System.Drawing.Size(17, 13);
          this.Lb_Et.TabIndex = 14;
@@ -167,7 +167,7 @@
          // Lb_Inf
          // 
          this.Lb_Inf.AutoSize = true;
-         this.Lb_Inf.Location = new System.Drawing.Point(13, 167);
+         this.Lb_Inf.Location = new System.Drawing.Point(12, 98);
          this.Lb_Inf.Name = "Lb_Inf";
          this.Lb_Inf.Size = new System.Drawing.Size(57, 13);
          this.Lb_Inf.TabIndex = 15;
@@ -175,7 +175,7 @@
          // 
          // Tb_Inf
          // 
-         this.Tb_Inf.Location = new System.Drawing.Point(76, 164);
+         this.Tb_Inf.Location = new System.Drawing.Point(75, 95);
          this.Tb_Inf.Name = "Tb_Inf";
          this.Tb_Inf.Size = new System.Drawing.Size(71, 20);
          this.Tb_Inf.TabIndex = 16;
@@ -183,7 +183,7 @@
          // Lb_Sup
          // 
          this.Lb_Sup.AutoSize = true;
-         this.Lb_Sup.Location = new System.Drawing.Point(12, 204);
+         this.Lb_Sup.Location = new System.Drawing.Point(12, 99);
          this.Lb_Sup.Name = "Lb_Sup";
          this.Lb_Sup.Size = new System.Drawing.Size(64, 13);
          this.Lb_Sup.TabIndex = 17;
@@ -191,16 +191,16 @@
          // 
          // Tb_Sup
          // 
-         this.Tb_Sup.Location = new System.Drawing.Point(82, 201);
+         this.Tb_Sup.Location = new System.Drawing.Point(75, 95);
          this.Tb_Sup.Name = "Tb_Sup";
-         this.Tb_Sup.Size = new System.Drawing.Size(65, 20);
+         this.Tb_Sup.Size = new System.Drawing.Size(71, 20);
          this.Tb_Sup.TabIndex = 18;
          // 
          // Menu
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(469, 340);
+         this.ClientSize = new System.Drawing.Size(424, 187);
          this.Controls.Add(this.Tb_Sup);
          this.Controls.Add(this.Lb_Sup);
          this.Controls.Add(this.Tb_Inf);
