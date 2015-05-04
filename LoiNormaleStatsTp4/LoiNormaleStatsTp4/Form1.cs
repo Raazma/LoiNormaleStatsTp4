@@ -97,7 +97,18 @@ namespace LoiNormaleStatsTp4
 
       private void Cb_Cas_SelectedIndexChanged(object sender, EventArgs e)
       {
+         if (Cb_Cas.SelectedIndex == 0)
+         {            
 
+         }
+         else if (Cb_Cas.SelectedIndex == 1)
+         {
+           
+         }
+         else
+         {
+            
+         }
       }
 
       private void Btn_Calcul_Click(object sender, EventArgs e)
