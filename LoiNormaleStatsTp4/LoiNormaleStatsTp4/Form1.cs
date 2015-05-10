@@ -80,9 +80,9 @@ namespace LoiNormaleStatsTp4
                            + "l'écart type de: " + Tb_Ecart.Text + "\n"
                            +"égal à ";
 
-         double value = (double.Parse(Tb_Inf.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text);
+         double value = (double.Parse(Tb_Inf.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text); // calcule de la cote z
          String[] Recherche =  SetCotePourRecherche(value);
-         Resultat += Math.Round((float.Parse(RechercheDansLaTable(Recherche[0], Recherche[1]).ToString()) * 100),4);
+         Resultat += Math.Round((float.Parse(RechercheDansLaTable(Recherche[0], Recherche[1]).ToString()) * 100),4); //va chercher la valeur dans la table et ensuite la met en %
          
          MessageBox.Show(Resultat);
       
@@ -124,20 +124,20 @@ namespace LoiNormaleStatsTp4
 
        
          double valueB = (double.Parse(Tb_Value_B.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text); //cote z de la 2 ieme valeur
-         if (valueB < 0)
+         if (valueB < 0) //verifie si la cote z est negative
             FlagValueB = true; 
          String[] RechercheB = SetCotePourRecherche(valueB);
-         double  ValueB = (float.Parse(RechercheDansLaTable(RechercheB[0], RechercheB[1]).ToString())) * 100;
+         double  ValueB = (float.Parse(RechercheDansLaTable(RechercheB[0], RechercheB[1]).ToString())) * 100; //recherche de la 2 ieme valeur dans la table
         
-         if ((FlagValueA && !FlagValueB)
+         if ((FlagValueA && !FlagValueB)  //verifie si ou on ce trouve dans la cloche si on a 1 negatif et 1 positif
           || (!FlagValueA && FlagValueB))
          {
-            Resultat += (Math.Round(ValueA + ValueB,4)).ToString();
+            Resultat += (Math.Round(ValueA + ValueB,4)).ToString(); //si on a un negatif et 1 positif on additonne seulement les 2 valeur
          }        
          else
          {
-            if(valueA>valueB)
-            Resultat += (Math.Round(ValueA - ValueB,4)).ToString();
+            if(valueA>valueB) //verifie quelle valeur est la plus grande pour lui soustraire la 2 ieme valeur
+            Resultat += (Math.Round(ValueA - ValueB,4)).ToString(); 
             else
             Resultat += (Math.Round(ValueB - ValueA,4)).ToString();
          }
@@ -226,7 +226,7 @@ namespace LoiNormaleStatsTp4
           int secondpart = (int)((value - firstpart) * 1000); //retourne chercher la partie decimal du nombre 
 
           String coteZ = Math.Abs(firstpart) + "," + ((int)(Math.Abs(secondpart / 100f))).ToString(); //construction de mes chaines pour la recherche dans la table
-          String decpart = (((int)Math.Round(secondpart / 10f))).ToString(); //construction de la partie decimal pour la recherche dans la table
+          String decpart = (((int)Math.Round(secondpart / 10f,2))).ToString(); //construction de la partie decimal pour la recherche dans la table
           decpart = "0,0" + (decpart.Length > 1 ? decpart[1] : decpart[0]); //suite de la construction de la partie decimal
 
           MessageBox.Show(coteZ + "    " + decpart);
