@@ -76,13 +76,13 @@ namespace LoiNormaleStatsTp4
       private void CalculInferieur()
       {
          String Resultat = "Le pourcentage de valeurs qui peuvent être inférieur à " + Tb_Inf.Text + " est selon \n"
-                          + "la moyenne : " + Tb_Moyenne.Text + "\net \n"
-                           + "l'écart type : " + Tb_Ecart.Text + "\n"
+                          + "la moyenne : " + Tb_Moyenne.Text + "\n et \n"
+                           + "l'écart type de: " + Tb_Ecart.Text + "\n"
                            +"égal à ";
 
          double value = (double.Parse(Tb_Inf.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text);
-         String[] Recherche =  SetCotePourRecherche(value);         
-         Resultat += (float.Parse(RechercheDansLaTable(Recherche[0], Recherche[1]).ToString()) * 100).ToString();
+         String[] Recherche =  SetCotePourRecherche(value);
+         Resultat += Math.Round((float.Parse(RechercheDansLaTable(Recherche[0], Recherche[1]).ToString()) * 100),4);
          
          MessageBox.Show(Resultat);
       
@@ -91,13 +91,12 @@ namespace LoiNormaleStatsTp4
       {
          String Resultat = "Le pourcentage de valeurs qui peuvent être supérieur à " + Tb_Sup.Text + " est selon \n"
                          + "la moyenne : " + Tb_Moyenne.Text + "\net \n"
-                          + "l'écart type : " + Tb_Ecart.Text + "\n"
+                          + "l'écart type de: " + Tb_Ecart.Text + "\n"
                           + "égal à ";
 
          double value = (double.Parse(Tb_Sup.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text);
-         String[] Recherche = SetCotePourRecherche(value);
-         Resultat += ((0.5 - float.Parse(RechercheDansLaTable(Recherche[0], Recherche[1]) .ToString())) * 100).ToString();         
-
+         String[] Recherche = SetCotePourRecherche(value);             
+         Resultat +=  Math.Round(((0.5 - float.Parse(RechercheDansLaTable(Recherche[0], Recherche[1]).ToString())) * 100),4);
          MessageBox.Show(Resultat);
       }
 
@@ -105,7 +104,7 @@ namespace LoiNormaleStatsTp4
       { 
          String Resultat = "Le pourcentage de valeurs qui peuvent être entre " + Tb_Value_A.Text +  " et " + Tb_Value_B.Text + " est selon \n"
                           + "la moyenne : " + Tb_Moyenne.Text + "\net \n"
-                          + "l'écart type : " + Tb_Ecart.Text + "\n"
+                          + "l'écart type de: " + Tb_Ecart.Text + "\n"
                           + "égal à ";
          bool FlagValueA = false;
          bool FlagValueB = false;
@@ -122,25 +121,23 @@ namespace LoiNormaleStatsTp4
          if (valueB < 0)
             FlagValueB = true; 
          String[] RechercheB = SetCotePourRecherche(valueB);
-         double ValueB = (float.Parse(RechercheDansLaTable(RechercheB[0], RechercheB[1]).ToString())) * 100;
-
-
+         double  ValueB = (float.Parse(RechercheDansLaTable(RechercheB[0], RechercheB[1]).ToString())) * 100;
+        
          if ((FlagValueA && !FlagValueB)
           || (!FlagValueA && FlagValueB))
          {
-            Resultat += (ValueA + ValueB).ToString();
+            Resultat += (Math.Round(ValueA + ValueB,4)).ToString();
          }        
          else
          {
             if(valueA>valueB)
-            Resultat += (ValueA - ValueB).ToString();
+            Resultat += (Math.Round(ValueA - ValueB,4)).ToString();
             else
-            Resultat += (ValueB - ValueA).ToString();
+            Resultat += (Math.Round(ValueB - ValueA,4)).ToString();
          }
          
-
          MessageBox.Show(Resultat);
-         
+        
          
       }
 
@@ -151,6 +148,7 @@ namespace LoiNormaleStatsTp4
 
       private void Lb_Tb_Visibility()
       {
+          //Gestion d'affichage
          Tb_Value_A.Visible = false;
          Tb_Value_B.Visible = false;
          Lb_Entre.Visible = false;
@@ -184,7 +182,11 @@ namespace LoiNormaleStatsTp4
       }
 
       private void Btn_Calcul_Click(object sender, EventArgs e)
-      {  
+      {         
+          //////////////////////////////////////////////////////////////////
+         ////verifie dans quelle etat on se trouve pour pouvoir appeler le
+        ///bon calcule
+        /////////////////////////////////////////////////////////////////////
          if(Tb_Ecart.Text!=String.Empty && Tb_Moyenne.Text != String.Empty)
          {
             if(Cb_Cas.SelectedIndex==0)
@@ -221,7 +223,7 @@ namespace LoiNormaleStatsTp4
           String decpart = (((int)Math.Round(secondpart / 10f))).ToString(); //construction de la partie decimal pour la recherche dans la table
           decpart = "0,0" + (decpart.Length > 1 ? decpart[1] : decpart[0]); //suite de la construction de la partie decimal
 
-         // MessageBox.Show(coteZ + "    " + decpart);
+          MessageBox.Show(coteZ + "    " + decpart);
 
           return new String[] { coteZ, decpart};            
 
@@ -229,6 +231,12 @@ namespace LoiNormaleStatsTp4
 
       private object RechercheDansLaTable(String coteZ, String decPart)
       {
+          if (coteZ[2].ToString().Equals("0"))     //pour la recherche    
+              coteZ = coteZ[0].ToString();
+          if (decPart[2].ToString().Equals("0"))  //pour la recherche    
+              decPart = decPart[0].ToString();
+
+
          int x = 0,y = 0;
          bool trouver = false;
 
@@ -238,15 +246,14 @@ namespace LoiNormaleStatsTp4
          trouver = false;
          
          for (int i = 0; i < 11 && !trouver; i++)
-            if (trouver = (decPart == Table[0, y = i].ToString())) { } //Recherche de la colonne de la partie decimale
-              
-            
-         
-         //MessageBox.Show(Table[x, y].ToString());
+            if (trouver = (decPart == Table[0, y = i].ToString())) {} //Recherche de la colonne de la partie decimale
+
 
          return Table[x, y];
       
       }
+
+    //La partie suivante est simplement de la gestion de touche 
       private void BlockLetter(KeyPressEventArgs e)
       {
         if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
