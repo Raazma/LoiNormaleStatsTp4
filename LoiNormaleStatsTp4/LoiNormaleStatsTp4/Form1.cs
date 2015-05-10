@@ -89,14 +89,20 @@ namespace LoiNormaleStatsTp4
       }
       private void CalculSuperieur()
       {
+          bool negate = false;
          String Resultat = "Le pourcentage de valeurs qui peuvent être supérieur à " + Tb_Sup.Text + " est selon \n"
                          + "la moyenne : " + Tb_Moyenne.Text + "\net \n"
                           + "l'écart type de: " + Tb_Ecart.Text + "\n"
                           + "égal à ";
 
-         double value = (double.Parse(Tb_Sup.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text);
-         String[] Recherche = SetCotePourRecherche(value);             
-         Resultat +=  Math.Round(((0.5 - float.Parse(RechercheDansLaTable(Recherche[0], Recherche[1]).ToString())) * 100),4);
+         double value = (double.Parse(Tb_Sup.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text); //calcule de la cote z
+         if (negate = (value < 0)) {}
+         String[] Recherche = SetCotePourRecherche(value);
+         if (!negate)//cote z positive donc 0.5 - la valeur dans la table de la cote z * 100 for le %
+             Resultat += Math.Round(((0.5 - float.Parse(RechercheDansLaTable(Recherche[0], Recherche[1]).ToString())) * 100), 4);
+         else  //cote z negative donc 0.5 + la valeur dans la table de la cote z * 100 for le %
+             Resultat += Math.Round(((0.5 + float.Parse(RechercheDansLaTable(Recherche[0], Recherche[1]).ToString())) * 100), 4);
+
          MessageBox.Show(Resultat);
       }
 
@@ -110,14 +116,14 @@ namespace LoiNormaleStatsTp4
          bool FlagValueB = false;
          
 
-         double valueA = (double.Parse(Tb_Value_A.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text);
-         if (valueA < 0)
+         double valueA = (double.Parse(Tb_Value_A.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text); //calcul de la cote z
+         if (valueA < 0) //verifie la position de la cote z de la valeur a si elle est negative set le flag
             FlagValueA = true;         
          String[] RechercheA = SetCotePourRecherche(valueA);        
-         double ValueA =  (float.Parse(RechercheDansLaTable(RechercheA[0], RechercheA[1]).ToString()) * 100);
+         double ValueA =  (float.Parse(RechercheDansLaTable(RechercheA[0], RechercheA[1]).ToString()) * 100); //va chercher la valeur de la premiere cote dans la table
 
        
-         double valueB = (double.Parse(Tb_Value_B.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text);
+         double valueB = (double.Parse(Tb_Value_B.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text); //cote z de la 2 ieme valeur
          if (valueB < 0)
             FlagValueB = true; 
          String[] RechercheB = SetCotePourRecherche(valueB);
