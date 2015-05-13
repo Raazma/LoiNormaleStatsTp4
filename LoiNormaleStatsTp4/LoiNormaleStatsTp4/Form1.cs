@@ -75,15 +75,20 @@ namespace LoiNormaleStatsTp4
 
       private void CalculInferieur()
       {
+         bool neg = false;
          String Resultat = "Le pourcentage de valeurs qui peuvent être inférieur à " + Tb_Inf.Text + " est selon \n"
                           + "la moyenne : " + Tb_Moyenne.Text + "\n et \n"
                            + "l'écart type de: " + Tb_Ecart.Text + "\n"
-                           +"égal à ";
+                           +"égal à: ";
 
          double value = (double.Parse(Tb_Inf.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text); // calcule de la cote z
+         neg = (value < 0);
          String[] Recherche =  SetCotePourRecherche(value);
-         Resultat += Math.Round((float.Parse(RechercheDansLaTable(Recherche[0], Recherche[1]).ToString()) * 100),4); //va chercher la valeur dans la table et ensuite la met en %
-         
+         if(!neg)
+         Resultat += Math.Round((0.5 + (float.Parse(RechercheDansLaTable(Recherche[0], Recherche[1]).ToString()))) * 100,4); //va chercher la valeur dans la table et ensuite la met en %
+         else          
+          Resultat += Math.Round((0.5 - (float.Parse(RechercheDansLaTable(Recherche[0], Recherche[1]).ToString()))) * 100, 4); //va chercher la valeur dans la table et ensuite la met en %
+
          MessageBox.Show(Resultat);
       
       }
@@ -93,10 +98,10 @@ namespace LoiNormaleStatsTp4
          String Resultat = "Le pourcentage de valeurs qui peuvent être supérieur à " + Tb_Sup.Text + " est selon \n"
                          + "la moyenne : " + Tb_Moyenne.Text + "\net \n"
                           + "l'écart type de: " + Tb_Ecart.Text + "\n"
-                          + "égal à ";
+                          + "égal à: ";
 
          double value = (double.Parse(Tb_Sup.Text) - double.Parse(Tb_Moyenne.Text)) / double.Parse(Tb_Ecart.Text); //calcule de la cote z
-         if (negate = (value < 0)) {}
+         negate = (value < 0);
          String[] Recherche = SetCotePourRecherche(value);
          if (!negate)//cote z positive donc 0.5 - la valeur dans la table de la cote z * 100 for le %
              Resultat += Math.Round(((0.5 - float.Parse(RechercheDansLaTable(Recherche[0], Recherche[1]).ToString())) * 100), 4);
@@ -111,7 +116,7 @@ namespace LoiNormaleStatsTp4
          String Resultat = "Le pourcentage de valeurs qui peuvent être entre " + Tb_Value_A.Text +  " et " + Tb_Value_B.Text + " est selon \n"
                           + "la moyenne : " + Tb_Moyenne.Text + "\net \n"
                           + "l'écart type de: " + Tb_Ecart.Text + "\n"
-                          + "égal à ";
+                          + "égal à: ";
          bool FlagValueA = false;
          bool FlagValueB = false;
          
@@ -227,9 +232,7 @@ namespace LoiNormaleStatsTp4
 
           String coteZ = Math.Abs(firstpart) + "," + ((int)(Math.Abs(secondpart / 100f))).ToString(); //construction de mes chaines pour la recherche dans la table
           String decpart = (((int)Math.Round(secondpart / 10f,2))).ToString(); //construction de la partie decimal pour la recherche dans la table
-          decpart = "0,0" + (decpart.Length > 1 ? decpart[1] : decpart[0]); //suite de la construction de la partie decimal
-
-          MessageBox.Show(coteZ + "    " + decpart);
+          decpart = "0,0" + (decpart.Length > 1 ? decpart[1] : decpart[0]); //suite de la construction de la partie decimal        
 
           return new String[] { coteZ, decpart};            
 
